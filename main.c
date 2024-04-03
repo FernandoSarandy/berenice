@@ -1,41 +1,46 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
-#include <time.h>
+#include "produtos.h" //responsavel por manipulação do estoque, tal como cadastro e atualização
+#include "vendas.h" //responsavel pelos tramites de venda, tal como pagamento e salvamento de cupom
 
-#include "bibliotecas.h"
+//Berenice ver - 4.0 - Dev Fernando, Gustavo, Carlos, Ana
 
-//Global var
+//global var
+
 int contador = 0;
 
-int main(){/*funcao principal (main)*/
+//main
+int main() {
+    int menu;
 
-    int main_menu;
-    produto *estoque;
+    itens *iten = NULL;
 
-    ler(&estoque);
+    lerEstoque(&iten);
 
-    do{/*menu inicial*/
-        printf("\n\t\tMENU PRINCIPAL:\n\t1 - PRODUTOS\n\t2 - VENDAS\n\t3 - SAIR\n\n");
-        scanf("%i", &main_menu);//menu inicial
+    printf("\t\t\tBem vinda berenice!\n");
+    do {
+        printf("1- Produto \n2- Vendas \n0- Sair\n");
+        scanf("%d", & menu);
         getchar();
-
-        switch(main_menu){
-        case 1://chama a funcao produtos
-            produtos(estoque);
+        switch (menu) {
+        case 1:
+            limparTela();
+            menuProdutos(iten);
             break;
-        case 2://chama a funcao vendas
-            vendas(estoque);
+        case 2:
+            limparTela();
+            menuVendas(iten);
             break;
-        case 3://fecha o programa apos salvar as informacoes em csv
-            printf("\nSaindo...Obrigado pela preferencia!\n");
+        case 0:
+            limparTela();
+            salvarEstoque(iten);    
+            printf("\nSaindo. . .\n");
             break;
-        default://erro caso informe opcao nao cadastrada no menu
-            printf("\nOpaco invalida!\n");
+        default:
+            printf("\nOpcao invalida! Tente novamente.");
             break;
         }
-    }while (main_menu != 3);
+    } while (menu != 0);
 
     return 0;
 }

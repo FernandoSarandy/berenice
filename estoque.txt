@@ -1,0 +1,8 @@
+7
+1,teste a,R$33.00,2
+3,teste c,R$6.00,4
+2,teste b,R$3.00,45
+4,teste e,R$5.00,10
+7,teste h,R$4.69,10
+5,teste f,R$3.25,10
+6,teste g,R$5.00,10
